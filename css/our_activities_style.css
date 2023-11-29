@@ -16,14 +16,6 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.dark body {
-    color: #ffffff;
-    margin: 0;
-    background-image: linear-gradient(to right, #000000 55%, #464646);
-    background-attachment: fixed;
-    font-family: Arial, sans-serif;
-}
-
 #theme_select_container {
     display: block;
     margin: 20px;
@@ -114,4 +106,11 @@ body {
     color: red;
     display: block;
     margin-top: 5px;
+}
+
+@media screen and (max-width: 900px) {
+    #theme_select_container {
+        margin-top: 100px;
+    }
+
 }

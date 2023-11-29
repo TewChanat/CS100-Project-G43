@@ -1,0 +1,61 @@
+#my_info_text {
+    font-family: 'Courier New', Courier, monospace;
+    list-style-type: none;
+    font-size: clamp(16px, 4.5vw, 40px);
+    line-height: 1.3em;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    margin-right: 50px;
+    padding: 0;
+    white-space: nowrap;
+}
+
+#profile_picture {
+    margin: 50px;
+    margin-top: 20px;
+    max-width: 32%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.video_pre {
+    display: block;
+    margin: auto;
+    max-width: 70%;
+    height: auto;
+    border-radius: 30px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+
+
+
+
+/* for mobile and tablet */
+@media only screen and (max-width: 1150px) {
+    .info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+    }
+
+    #profile_picture {
+        max-width: 60%;
+        height: auto;
+        margin: 10px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #my_info_text {
+        margin-left: 40px;
+    }
+
+}

@@ -1,0 +1,51 @@
+#header {
+    text-align: center;
+    font-size: clamp(48px, 5vw, 96px);
+    white-space: nowrap;
+}
+
+#advisor_profile_picture {
+    width: 40%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 30px;
+}
+
+.collum_info {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#advisor_info_text {
+    font-family: 'Courier New', Courier, monospace;
+    list-style-type: "-";
+    font-size: clamp(16px, 2vw, 29px);
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+#advisor_info_text li {
+    padding-left: 20px;
+    padding-bottom: 8px;
+}
+
+/* for mobile and tablet */
+@media screen and (max-width: 923px) {
+    .collum_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    #dis_on_mobile {
+        display: none;
+    }
+
+    #advisor_profile_picture {
+        width: 50%;
+    }
+
+}

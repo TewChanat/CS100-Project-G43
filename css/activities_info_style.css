@@ -1,0 +1,48 @@
+div.gallery_container {
+    display: flex;
+    justify-content: space-around;
+}
+
+div.gallery_item {
+    margin: 20px;
+    border: 10px solid #ccc;
+    width: 100%;
+    border-radius: 20px;
+}
+
+div.gallery_item:hover {
+    border: 10px solid #928a8a;
+}
+
+div.gallery_item img {
+    width: 100%;
+    height: auto;
+    border: 0;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+div.gallery_item div {
+    padding: 15px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: clamp(24px, 4vw, 32px);
+}
+
+/* for mobile and tablet */
+@media screen and (max-width: 780px) {
+
+    div.gallery_container {
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+
+    div.gallery_item {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+}

@@ -7,16 +7,40 @@
 */
 
 /* Set the font family for the entire body */
+
 body {
+    color: #000000;
     margin: 0;
+    background-image: #ffffff;
+    background-attachment: fixed;
     font-family: Arial, sans-serif;
+}
+
+.dark body {
+    color: #ffffff;
+    margin: 0;
+    background-image: linear-gradient(to right, #000000 55%, #464646);
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+#theme_select_container {
+    display: block;
+    margin: 20px;
+    margin-top: 70px;
+    position: relative;
+}
+
+#theme_select_container select {
+    position: relative;
+    right: auto;
 }
 
 /* Styling for the form container */
 .form-container {
     max-width: 600px;
     margin: 20px auto;
-    margin-top: 100px;
+    /* margin-top: 100px; */
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;

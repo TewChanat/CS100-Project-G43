@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
     <title>Forms - CSTU Passport</title>
-    <link rel="stylesheet" href="../css/menubar_kit_profile.css">
     <link rel="stylesheet" href="../css/our_activities_style.css">
+    <link rel="stylesheet" href="../css/menubar_kit_profile.css">
 </head>
 
 <body>
@@ -29,6 +29,14 @@
             <li><a href="our_activities.html">OUR ACTIVITIES</a></li>
         </ul>
     </nav>
+
+    <div id="theme_select_container">
+        <label for="theme">Theme:</label>
+        <select id="theme" name="theme" onchange='change_theme(this); saveValue(this);'>
+            <option value="light">light</option>
+            <option value="dark">dark</option>
+        </select>
+    </div>
 
     <!-- Form Container -->
     <div class="form-container">
@@ -146,6 +154,8 @@
     </div>
 
     <!-- JavaScript -->
+    <script src="../js/save_value.js"></script>
+    <script src="../js/theme_change.js"></script>
     <script src="script.js"></script>
 </body>
 

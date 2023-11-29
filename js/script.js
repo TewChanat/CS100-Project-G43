@@ -7,9 +7,10 @@
 */
 
 const config = {
-    backendUrl: "http://localhost:8000/", // Default backend URL
+    // backendUrl: "http://54.179.42.49/", // Default backend URL
+    // backendUrl: "https://d1npkyc4r380kx.cloudfront.net/", // Default backend URL
+    backendUrl: "https://d1a6370uhsfk5w.cloudfront.net/", // Default backend URL
 };
-const port = 8000;
 
 // Function to validate Firstname and Lastname
 function validateName() {
@@ -67,7 +68,7 @@ function validateFormOnInput() {
 // Function to fetch activity types from the backend
 async function fetchActivityTypes() {
     try {
-        const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
+        const response = await fetch(config.backendUrl + "getActivityType");
         if (response.ok) {
             const data = await response.json();
             return data;
@@ -111,8 +112,16 @@ async function submitForm(event) {
 
     const startDateInput = document.getElementById("startDate").value;
     const endDateInput = document.getElementById("endDate").value;
+    const academicYearInput = document.getElementById("academicYear").value;
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);
+
+    if (startDateInput.getFullYear + 543 < 2500 + academicYearInput) {
+        console.log("startdate: " + startDate.getFullYear + 543);
+        console.log("academic year: " + 2500 + academic_year);
+        alert("start time should be after academic year.");
+        return;
+    }
 
     if (endDate <= startDate) {
         alert("End datetime should be after the start datetime.");
@@ -140,7 +149,7 @@ async function submitForm(event) {
 
     try {
         // Send data to the backend using POST request
-        const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
+        const response = await fetch(config.backendUrl + "record", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

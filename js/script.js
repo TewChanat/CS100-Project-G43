@@ -1,3 +1,5 @@
+
+
 /*
   File: script.js
   Author: CS100 Team
@@ -7,10 +9,9 @@
 */
 
 const config = {
-    // backendUrl: "http://54.179.42.49/", // Default backend URL
-    // backendUrl: "https://d1npkyc4r380kx.cloudfront.net/", // Default backend URL
-    backendUrl: "https://d1a6370uhsfk5w.cloudfront.net/", // Default backend URL
+    backendUrl: "http://localhost:8000/", // Default backend URL
 };
+const port = 8000;
 
 // Function to validate Firstname and Lastname
 function validateName() {
@@ -68,7 +69,7 @@ function validateFormOnInput() {
 // Function to fetch activity types from the backend
 async function fetchActivityTypes() {
     try {
-        const response = await fetch(config.backendUrl + "getActivityType");
+        const response = await fetch(`http://${window.location.hostname}:${port}/getActivityType`);
         if (response.ok) {
             const data = await response.json();
             return data;
@@ -112,7 +113,6 @@ async function submitForm(event) {
 
     const startDateInput = document.getElementById("startDate").value;
     const endDateInput = document.getElementById("endDate").value;
-    const academicYearInput = document.getElementById("academicYear").value;
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);
 
@@ -149,7 +149,7 @@ async function submitForm(event) {
 
     try {
         // Send data to the backend using POST request
-        const response = await fetch(config.backendUrl + "record", {
+        const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

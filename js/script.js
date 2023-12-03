@@ -113,6 +113,7 @@ async function submitForm(event) {
 
     const startDateInput = document.getElementById("startDate").value;
     const endDateInput = document.getElementById("endDate").value;
+    const academicYearInput = document.getElementById("academicYear").value;
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);
 

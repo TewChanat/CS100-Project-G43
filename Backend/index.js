@@ -127,6 +127,7 @@ app.get('/getActivityType', (req, res) => {
         return res.status(500).json({ error: 'Internal server error' });
       }
     });
+Z
 });
 
 // GET endpoint to retrieve list of passport form from 'records.json' file

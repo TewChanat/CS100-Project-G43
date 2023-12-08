@@ -169,6 +169,7 @@ async function submitForm(event) {
 
             // Display success message with formatted data
             alert(responseData.message + "\n" + formattedData);
+            document.getElementsByClassName("output-continer").textContent.appendChild(responseData.message + "\n" + formattedData);
 
             document.getElementById("myForm").reset();
         } else {
@@ -176,6 +177,7 @@ async function submitForm(event) {
 
             // Display error message
             alert("Failed to submit form data. Please try again.");
+
         }
     } catch (error) {
         console.error("An error occurred while submitting form data:", error);

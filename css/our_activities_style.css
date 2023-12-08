@@ -108,6 +108,15 @@ body {
     margin-top: 5px;
 }
 
+.output-container {
+    max-width: 600px;
+    margin: 20px auto;
+    /* margin-top: 100px; */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
 @media screen and (max-width: 900px) {
     #theme_select_container {
         margin-top: 100px;

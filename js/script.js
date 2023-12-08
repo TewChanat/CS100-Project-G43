@@ -43,6 +43,17 @@ function validateStudentID() {
     return true;
 }
 
+function displayData(data) {
+    var mainContainer = document.getElementsByClassName("output-container")[0];
+    mainContainer.innerHTML = "";
+
+    for (let key in data) {
+        let p = document.createElement("p");
+        p.textContent = `${key}: ${data[key]}`;
+        mainContainer.appendChild(p);
+    }
+}
+
 // Function to validate University Email
 function validateEmail() {
     const emailInput = document.getElementById("email");
@@ -172,16 +183,9 @@ async function submitForm(event) {
 
             // Display success message with formatted data
             alert(responseData.message + "\n" + formattedData);
-            // document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
 
-            // function appendData(data) {
-            mainContainer.innerHTML = JSON.stringify(responseData.message + "\n" + formattedData);
-            //     for (var i = 0; i < data.length; i++) {
-            //         var div = document.createElement("div");
-            //         div.innerHTML = key[i] + ' ' + value[i];
-            //         mainContainer.appendChild(div);
-            //     }
-            // }
+
+            displayData(responseData.data);
 
             // appendData(responseData);
 

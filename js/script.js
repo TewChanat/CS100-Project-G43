@@ -19,11 +19,12 @@ function validateName() {
     const names = fullnameInput.value.trim().split(" ");
     const errorElement = document.getElementById("fullnameError");
 
-    if (names.value.charAt(0) !== nameInput.value.charAt(0).toUpperCase()) {
-        errorElement.textContent = "Name must start with a capital letter.";
-        return false;
-    } else if (names.length !== 2) {
+
+    if (names.length !== 2) {
         errorElement.textContent = "Please enter both your Firstname and Lastname.";
+        return false;
+    } else if (fullnameInput.value.charAt(0) !== fullnameInput.value.charAt(0).toUpperCase()) {
+        errorElement.textContent = "Name must start with a capital letter.";
         return false;
     } else {
         errorElement.textContent = ""; // Clear the error message when valid

@@ -169,7 +169,7 @@ async function submitForm(event) {
 
             // Display success message with formatted data
             alert(responseData.message + "\n" + formattedData);
-            document.getElementsByClassName("output-continer").textContent.appendChild(responseData.message + "\n" + formattedData);
+            document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
 
             document.getElementById("myForm").reset();
         } else {

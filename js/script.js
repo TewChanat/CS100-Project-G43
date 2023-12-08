@@ -162,6 +162,9 @@ async function submitForm(event) {
             const responseData = await response.json();
             console.log("Form data submitted successfully!");
 
+            var mainContainer = document.getElementsByClassName("output-container");
+            mainContainer.reset();
+
             // Format JSON data for display
             const formattedData = Object.entries(responseData.data)
                 .map(([key, value]) => `"${key}": "${value}"`)
@@ -171,16 +174,16 @@ async function submitForm(event) {
             alert(responseData.message + "\n" + formattedData);
             // document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
 
-            function appendData(data) {
-                var mainContainer = document.getElementsByClassName("output-container");
-                for (var i = 0; i < data.length; i++) {
-                    var div = document.createElement("div");
-                    div.innerHTML = key[i] + ' ' + value[i];
-                    mainContainer.appendChild(div);
-                }
-            }
+            // function appendData(data) {
+            mainContainer.appendChild(responseData.message + "\n" + formattedData);
+            //     for (var i = 0; i < data.length; i++) {
+            //         var div = document.createElement("div");
+            //         div.innerHTML = key[i] + ' ' + value[i];
+            //         mainContainer.appendChild(div);
+            //     }
+            // }
 
-            appendData(responseData);
+            // appendData(responseData);
 
 
             document.getElementById("myForm").reset();

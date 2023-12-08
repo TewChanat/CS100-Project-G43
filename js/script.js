@@ -45,7 +45,7 @@ function validateStudentID() {
 
 function displayData(data) {
     var mainContainer = document.getElementsByClassName("output-container")[0];
-    mainContainer.style.display = "block";
+    // mainContainer.style.display = "block";
     mainContainer.innerHTML = "";
 
 

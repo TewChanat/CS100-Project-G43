@@ -163,7 +163,7 @@ async function submitForm(event) {
             console.log("Form data submitted successfully!");
 
             var mainContainer = document.getElementsByClassName("output-container");
-            mainContainer.reset();
+            mainContainer.innerHTML = "Result:";
 
             // Format JSON data for display
             const formattedData = Object.entries(responseData.data)

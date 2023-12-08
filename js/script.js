@@ -175,7 +175,7 @@ async function submitForm(event) {
             // document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
 
             // function appendData(data) {
-            mainContainer.innerHTML = responseData.message + "\n" + formattedData;
+            mainContainer.innerHTML = JSON.stringify(responseData.message + "\n" + formattedData);
             //     for (var i = 0; i < data.length; i++) {
             //         var div = document.createElement("div");
             //         div.innerHTML = key[i] + ' ' + value[i];

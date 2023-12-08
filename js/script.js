@@ -172,7 +172,7 @@ async function submitForm(event) {
             // document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
 
             function appendData(data) {
-                var mainContainer = document.getElementById("output-container");
+                var mainContainer = document.getElementsByClassName("output-container");
                 for (var i = 0; i < data.length; i++) {
                     var div = document.createElement("div");
                     div.innerHTML = key[i] + ' ' + value[i];

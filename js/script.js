@@ -45,7 +45,9 @@ function validateStudentID() {
 
 function displayData(data) {
     var mainContainer = document.getElementsByClassName("output-container")[0];
+    mainContainer.style, display = "block";
     mainContainer.innerHTML = "";
+
 
     for (let key in data) {
         let p = document.createElement("p");
@@ -182,7 +184,7 @@ async function submitForm(event) {
                 .join("\n");
 
             // Display success message with formatted data
-            alert(responseData.message + "\n" + formattedData);
+            // alert(responseData.message + "\n" + formattedData);
 
 
             displayData(responseData.data);

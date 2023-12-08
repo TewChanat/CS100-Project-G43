@@ -163,7 +163,7 @@ async function submitForm(event) {
             console.log("Form data submitted successfully!");
 
             var mainContainer = document.getElementsByClassName("output-container");
-            mainContainer.innerHTML = "Result:";
+            mainContainer.innerHTML = " ";
 
             // Format JSON data for display
             const formattedData = Object.entries(responseData.data)
@@ -175,7 +175,7 @@ async function submitForm(event) {
             // document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
 
             // function appendData(data) {
-            mainContainer.appendChild(responseData.message + "\n" + formattedData);
+            mainContainer.innerHTML = responseData.message + "\n" + formattedData;
             //     for (var i = 0; i < data.length; i++) {
             //         var div = document.createElement("div");
             //         div.innerHTML = key[i] + ' ' + value[i];

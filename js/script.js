@@ -117,9 +117,9 @@ async function submitForm(event) {
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);
 
-    if (startDateInput.getFullYear + 543 < 2500 + academicYearInput) {
-        console.log("startdate: " + startDate.getFullYear + 543);
-        console.log("academic year: " + 2500 + academic_year);
+    if (startDateInput.getFullYear < academicYearInput - 543) {
+        // console.log("startdate: " + startDate.getFullYear );
+        // console.log("academic year: " + 2500 + academic_year);
         alert("start time should be after academic year.");
         return;
     }
@@ -170,9 +170,18 @@ async function submitForm(event) {
             // Display success message with formatted data
             alert(responseData.message + "\n" + formattedData);
             // document.getElementsByClassName("output-container").textContent.appendChild(responseData.message + "\n" + formattedData);
-            const preElement = document.getElementById('output-container');
 
-            preElement.innerHTML = JSON.stringify(formattedData, null, 2);
+            function appendData(data) {
+                var mainContainer = document.getElementById("output-container");
+                for (var i = 0; i < data.length; i++) {
+                    var div = document.createElement("div");
+                    div.innerHTML = key[i] + ' ' + value[i];
+                    mainContainer.appendChild(div);
+                }
+            }
+
+            appendData(responseData);
+
 
             document.getElementById("myForm").reset();
         } else {

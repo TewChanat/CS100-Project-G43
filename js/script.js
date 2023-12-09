@@ -61,7 +61,8 @@ function validateDates() {
         errorElementEnd.textContent = "End date cannot be before start date.";
         return false;
     } else {
-        errorElement.textContent = ""; // Clear the error message when valid
+        errorElementStart.textContent = ""; // Clear the error message when valid
+        errorElementEnd.textContent = ""; // Clear the error message when valid
     }
     return true;
 }

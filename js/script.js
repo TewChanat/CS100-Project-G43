@@ -216,7 +216,7 @@ async function submitForm(event) {
                 // Validate the start date and end date
                 const startDateInput = data.start_date;
                 const endDateInput = data.end_date;
-                const academicYear = data.academicYear;
+                const academicYear = data.academicYear - 543;
                 const semesters = calendarData[academicYear];
 
                 if (!semesters) {

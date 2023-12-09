@@ -47,6 +47,23 @@ function validateStudentID() {
     return true;
 }
 
+function validateDates() {
+    const startDateInput = document.getElementById("startDate").value;
+    const endDateInput = document.getElementById("endDate").value;
+    const errorElement = document.getElementById("dateError");
+
+    const startDate = new Date(startDateInput);
+    const endDate = new Date(endDateInput);
+
+    if (startDate > endDate) {
+        errorElement.textContent = "Start date cannot be after end date.";
+        return false;
+    } else {
+        errorElement.textContent = ""; // Clear the error message when valid
+    }
+    return true;
+}
+
 function displayData(data) {
     var mainContainer = document.getElementsByClassName("output-container")[0];
     // mainContainer.style.display = "block";
@@ -81,6 +98,7 @@ function validateFormOnInput() {
     validateName();
     validateStudentID();
     validateEmail();
+    validateDates();
 }
 
 // Function to fetch activity types from the backend
@@ -118,22 +136,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     populateActivityTypes(activityTypes);
 });
 
-function validateDates() {
-    const startDateInput = document.getElementById("startDate").value;
-    const endDateInput = document.getElementById("endDate").value;
-    const errorElement = document.getElementById("dateError");
 
-    const startDate = new Date(startDateInput);
-    const endDate = new Date(endDateInput);
-
-    if (startDate > endDate) {
-        errorElement.textContent = "Start date cannot be after end date.";
-        return false;
-    } else {
-        errorElement.textContent = ""; // Clear the error message when valid
-    }
-    return true;
-}
 
 // Function to submit the form
 // Function to submit the form
@@ -151,12 +154,6 @@ async function submitForm(event) {
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);
 
-    if (startDateInput.getFullYear < academicYearInput - 543) {
-        // console.log("startdate: " + startDate.getFullYear );
-        // console.log("academic year: " + 2500 + academic_year);
-        alert("start time should be after academic year.");
-        return;
-    }
 
     if (endDate <= startDate) {
         alert("End datetime should be after the start datetime.");
@@ -235,3 +232,6 @@ document
     .getElementById("studentID")
     .addEventListener("input", validateStudentID);
 document.getElementById("email").addEventListener("input", validateEmail);
+document.getElementById("startDate").addEventListener("input", validateDates);
+document.getElementById("endDate").addEventListener("input", validateDates);
+

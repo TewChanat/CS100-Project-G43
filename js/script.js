@@ -50,8 +50,8 @@ function validateStudentID() {
 function validateDates() {
     const startDateInput = document.getElementById("startDate").value;
     const endDateInput = document.getElementById("endDate").value;
-    const errorElementEnd = document.getElementById("startDateError");
-    const errorElementStart = document.getElementById("endDateError");
+    const errorElementStart = document.getElementById("startDateError");
+    const errorElementEnd = document.getElementById("endDateError");
 
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);

@@ -50,13 +50,15 @@ function validateStudentID() {
 function validateDates() {
     const startDateInput = document.getElementById("startDate").value;
     const endDateInput = document.getElementById("endDate").value;
-    const errorElement = document.getElementById("dateError");
+    const errorElementEnd = document.getElementById("startDateError");
+    const errorElementStart = document.getElementById("endDateError");
 
     const startDate = new Date(startDateInput);
     const endDate = new Date(endDateInput);
 
     if (startDate > endDate) {
-        errorElement.textContent = "Start date cannot be after end date.";
+        errorElementStart.textContent = "Start date cannot be after end date.";
+        errorElementEnd.textContent = "End date cannot be before start date.";
         return false;
     } else {
         errorElement.textContent = ""; // Clear the error message when valid

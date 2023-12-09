@@ -118,13 +118,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     populateActivityTypes(activityTypes);
 });
 
+function validateDates() {
+    const startDateInput = document.getElementById("startDate").value;
+    const endDateInput = document.getElementById("endDate").value;
+    const errorElement = document.getElementById("dateError");
+
+    const startDate = new Date(startDateInput);
+    const endDate = new Date(endDateInput);
+
+    if (startDate > endDate) {
+        errorElement.textContent = "Start date cannot be after end date.";
+        return false;
+    } else {
+        errorElement.textContent = ""; // Clear the error message when valid
+    }
+    return true;
+}
+
 // Function to submit the form
 // Function to submit the form
 async function submitForm(event) {
     event.preventDefault();
 
     // Validate form inputs before submission
-    if (!validateName() || !validateStudentID() || !validateEmail()) {
+    if (!validateName() || !validateStudentID() || !validateEmail() || !validateDates()) {
         return;
     }
 

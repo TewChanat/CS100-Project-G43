@@ -146,3 +146,20 @@ app.get('/getPassports', (req, res) => {
     }
   });
 });
+
+app.get('/getCalendar', (req, res) => {
+  fs.readFile('databases/calendar.json', 'utf8', (err, data) => {
+    if (err) {
+      console.error('Error reading calendar.json:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+
+    try {
+      const calendar = JSON.parse(data);
+      return res.status(200).json(calendar);
+    } catch (err) {
+      console.error('Error parsing calendar.json:', err);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+  });
+});

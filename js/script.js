@@ -23,7 +23,7 @@ function validateName() {
     if (names.length !== 2) {
         errorElement.textContent = "Please enter both your Firstname and Lastname.";
         return false;
-    } else if (fullnameInput.value.charAt(0) !== fullnameInput.value.charAt(0).toUpperCase()) {
+    } else if (names[0].charAt(0) !== names[0].charAt(0).toUpperCase()) {
         errorElement.textContent = "Name must start with a capital letter.";
         return false;
     } else {
@@ -66,6 +66,27 @@ function validateDates() {
     }
     return true;
 }
+
+function validateDateInCalendar(dateInput, calendarData) {
+    const errorElement = document.getElementById("dateError");
+    const date = new Date(dateInput);
+
+    for (let year in calendarData) {
+        for (let semester of calendarData[year]) {
+            const startDate = new Date(semester.start_date);
+            const endDate = new Date(semester.end_date);
+
+            if (date >= startDate && date <= endDate) {
+                errorElement.textContent = ""; // Clear the error message when valid
+                return true;
+            }
+        }
+    }
+
+    errorElement.textContent = "Date must be within a semester in the calendar.";
+    return false;
+}
+
 
 function displayData(data) {
     var mainContainer = document.getElementsByClassName("output-container")[0];
@@ -224,6 +245,47 @@ async function submitForm(event) {
     } catch (error) {
         console.error("An error occurred while submitting form data:", error);
     }
+
+    // Fetch calendar data
+    fetch('/getCalendar')
+        .then(res => {
+            if (!res.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return res.json();
+        })
+        .then(calendarData => {
+            // Validate the start date and end date
+            const startDateInput = data.start_date;
+            const endDateInput = data.end_date;
+            const academicYear = data.academicYear;
+            const semesters = calendarData[academicYear];
+
+            if (!semesters) {
+                alert("Invalid academic year.");
+                return;
+            }
+
+            let valid = false;
+            for (let semester of semesters) {
+                const startDate = new Date(semester.start_date);
+                const endDate = new Date(semester.end_date);
+                if (new Date(startDateInput) >= startDate && new Date(endDateInput) <= endDate) {
+                    valid = true;
+                    break;
+                }
+            }
+
+            if (!valid) {
+                alert("Start date and end date must be within a semester in the academic year.");
+                return;
+            }
+
+            // Continue with form submission...
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
 }
 
 // Event listener for form submission

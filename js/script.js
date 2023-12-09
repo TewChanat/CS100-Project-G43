@@ -204,6 +204,47 @@ async function submitForm(event) {
     console.log(data);
 
     try {
+        // Fetch calendar data
+        fetch(`http://${window.location.hostname}:${port}/getCalendar`)
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return res.json();
+            })
+            .then(calendarData => {
+                // Validate the start date and end date
+                const startDateInput = data.start_date;
+                const endDateInput = data.end_date;
+                const academicYear = data.academicYear;
+                const semesters = calendarData[academicYear];
+
+                if (!semesters) {
+                    alert("Invalid academic year.");
+                    return;
+                }
+
+                let valid = false;
+                for (let semester of semesters) {
+                    const startDate = new Date(semester.start_date);
+                    const endDate = new Date(semester.end_date);
+                    if (new Date(startDateInput) >= startDate && new Date(endDateInput) <= endDate) {
+                        valid = true;
+                        break;
+                    }
+                }
+
+                if (!valid) {
+                    alert("Start date and end date must be within a semester in the academic year.");
+                    return;
+                }
+
+                // Continue with form submission...
+            })
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
+
         // Send data to the backend using POST request
         const response = await fetch(`http://${window.location.hostname}:${port}/record`, {
             method: "POST",
@@ -246,46 +287,7 @@ async function submitForm(event) {
         console.error("An error occurred while submitting form data:", error);
     }
 
-    // Fetch calendar data
-    fetch('/getCalendar')
-        .then(res => {
-            if (!res.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return res.json();
-        })
-        .then(calendarData => {
-            // Validate the start date and end date
-            const startDateInput = data.start_date;
-            const endDateInput = data.end_date;
-            const academicYear = data.academicYear;
-            const semesters = calendarData[academicYear];
 
-            if (!semesters) {
-                alert("Invalid academic year.");
-                return;
-            }
-
-            let valid = false;
-            for (let semester of semesters) {
-                const startDate = new Date(semester.start_date);
-                const endDate = new Date(semester.end_date);
-                if (new Date(startDateInput) >= startDate && new Date(endDateInput) <= endDate) {
-                    valid = true;
-                    break;
-                }
-            }
-
-            if (!valid) {
-                alert("Start date and end date must be within a semester in the academic year.");
-                return;
-            }
-
-            // Continue with form submission...
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-        });
 }
 
 // Event listener for form submission
